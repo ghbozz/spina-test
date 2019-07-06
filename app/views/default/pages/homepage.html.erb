@@ -1,0 +1,8 @@
+<h1><%= current_page.title %></h1>
+<p><%= content(:text).try(:html_safe) %></p>
+
+<% current_page.children.each do |page| %>
+  <h3><%= page.title %> <span><%= link_to 'link', page.materialized_path %></span></h3>
+  <%#= raise %>
+  <p><%= page.content(:text).try(:html_safe) %></p>
+<% end %>
