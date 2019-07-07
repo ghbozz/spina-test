@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_181053) do
+ActiveRecord::Schema.define(version: 2019_07_06_205326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,30 @@ ActiveRecord::Schema.define(version: 2019_07_06_181053) do
     t.boolean "active", default: true
     t.integer "resource_id"
     t.index ["resource_id"], name: "index_spina_pages_on_resource_id"
+  end
+
+  create_table "spina_project_categories", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spina_projects", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.text "description"
+    t.string "lat"
+    t.string "long"
+    t.string "duration"
+    t.integer "project_category_id"
+    t.text "testimonial"
+    t.string "testimonial_name"
+    t.datetime "completion_date"
+    t.integer "image_collection_id"
+    t.integer "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "spina_resources", force: :cascade do |t|
